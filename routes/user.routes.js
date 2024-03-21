@@ -1,27 +1,27 @@
 const { Router } = require('express');
 const {
-  getFavoriteRestaurants,
-  likeRestaurant,
-  dislikeRestaurant,
+  getFavoriteOffers,
+  likeOffer,
+  dislikeOffer,
 } = require('../controllers/user.controller');
 const passport = require('passport');
 
 const router = Router();
 
 router.get(
-  '/getFavoriteRestaurants',
+  '/getFavoriteOffers',
   passport.authenticate('jwt', { session: false }),
-  getFavoriteRestaurants
+  getFavoriteOffers
 );
 router.put(
-  '/likeRestaurant/:restaurant_id',
+  '/likeOffer/:offer_id',
   passport.authenticate('jwt', { session: false }),
-  likeRestaurant
+  likeOffer
 );
 router.put(
-  '/dislikeRestaurant/:restaurant_id',
+  '/dislikeOffer/:offer_id',
   passport.authenticate('jwt', { session: false }),
-  dislikeRestaurant
+  dislikeOffer
 );
 
 module.exports = router;

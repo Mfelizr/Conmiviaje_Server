@@ -1,24 +1,24 @@
 const User = require('../models/user.model');
 
-const getFavoriteRestaurants = async (req, res, next) => {
+const getFavoriteOffers = async (req, res, next) => {
   try {
     const { _id: user_id } = req.user;
-    const user = await User.findById(user_id).populate('favoriteRestaurants').exec();
+    const user = await User.findById(user_id).populate('favoriteOffers').exec();
     console.log(user);
-    res.status(200).json(user.favoriteRestaurants);
+    res.status(200).json(user.favoriteOffers);
   } catch (err) {
     next(err);
   }
 };
 
-const likeRestaurant = async (req, res, next) => {
+const likeOffer = async (req, res, next) => {
   try {
     const { _id: user_id } = req.user;
-    const { restaurant_id } = req.params;
+    const { Offer_id } = req.params;
 
     const userUpdated = await User.findByIdAndUpdate(
       user_id,
-      { $addToSet: { favoriteRestaurants: restaurant_id } },
+      { $addToSet: { favoriteOffers: Offer_id } },
       { new: true }
     );
 
@@ -28,14 +28,14 @@ const likeRestaurant = async (req, res, next) => {
   }
 };
 
-const dislikeRestaurant = async (req, res, next) => {
+const dislikeOffer = async (req, res, next) => {
   try {
     const { _id: user_id } = req.user;
-    const { restaurant_id } = req.params;
+    const { Offer_id } = req.params;
 
     const userUpdated = await User.findByIdAndUpdate(
       user_id,
-      { $pull: { favoriteRestaurants: restaurant_id } },
+      { $pull: { favoriteOffers: Offer_id } },
       { new: true }
     );
 
@@ -46,7 +46,7 @@ const dislikeRestaurant = async (req, res, next) => {
 };
 
 module.exports = {
-  getFavoriteRestaurants,
-  likeRestaurant,
-  dislikeRestaurant,
+  getFavoriteOffers,
+  likeOffer,
+  dislikeOffer,
 };

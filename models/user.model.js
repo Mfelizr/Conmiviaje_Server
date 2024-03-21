@@ -4,20 +4,20 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      required: [true, 'A username is needed!'],
+      required: [true, 'Please specify a username'],
       unique: true,
       trim: true,
     },
     email: {
       type: String,
-      required: [true, 'An email is needed'],
+      required: [true, 'Please specify an email'],
       unique: true,
       minLength: 1,
       lowercase: true,
       trim: true,
       match: [
         /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-        'Choose a valid email',
+        'Please provide a valid email address',
       ],
     },
     password: {
@@ -29,8 +29,12 @@ const userSchema = new Schema(
       default:
         'https://static-00.iconduck.com/assets.00/avatar-default-icon-2048x2048-h6w375ur.png',
     },
-    favoriteRestaurants: [{ type: Schema.Types.ObjectId, ref: 'Restaurant' }],
-    createdRestaurants: [{ type: Schema.Types.ObjectId, ref: 'Restaurant' }],
+    role: {
+        type: String,
+        trim: true,
+        default: "user"
+      },
+    favoriteOffers: [{ type: Schema.Types.ObjectId, ref: 'Offer' }],    
   },
   {
     timestamps: true,

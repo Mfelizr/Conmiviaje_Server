@@ -9,7 +9,7 @@ passport.use(
   new JwtStrategy(
     {
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: 'secreto',
+      secretOrKey: 'secreto', // cambiar por variable de entorno
     },
     async function (jwtPayload, done) {
       try {
@@ -38,15 +38,15 @@ passport.use(
       try {
         let user = await User.findOne({ email }).select('+password');
         if (!user) {
-          console.log('Usuario no encontrado');
+          console.log('User not found');
           return done(null, false);
         }
         
         if (!validoPass(password, user.password.hash, user.password.salt)) {
-          console.log('Contraseña incorrecta');
+          console.log('Incorrect Password');
           return done(null, false);
         }
-        console.log('Login correcto');
+        console.log('Correct Login');
 
         return done(null, user);
       } catch (error) {

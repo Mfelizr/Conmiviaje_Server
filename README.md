@@ -1,8 +1,8 @@
-# Project - Restaurant
+# Project - Conmiviaje
 
 ## Description
 
-This is a full-stack application that allows users to find and review restaurants. Users can create an account, log in, and add restaurants to their favorites. They can also add, edit, and delete restaurants.
+This is a full-stack application that allows users to find a destiny where they want to travel to, and get information for living or move to that country. There are two kind of users. Admin users and external users. The Users can create an account, log in, and add offers to their favorites. The Admin user can add, edit, and delete offers.
 
 ## Installation
 
@@ -39,23 +39,23 @@ npm run dev
 
 # API Routes
 
-## **Restaurants routes**:
+## **Conmiviaje routes**:
 
 | URL path                    | HTTP Method       | Response                          | Action                        |
 | :--------------------------:|:-----------------:| :--------------------------------:| :----------------------------:|
-| /api/restaurants/list       | GET               | [restaurants]                     | Get all restaurants     |
-| /api/restaurants/getOne/:restaurant_id            | GET               | {restaurant}                | Get one Restaurant     |
-| /api/restaurants/create            | POST               | {createdRestaurant}                | Create Restaurant      |
-| /api/restaurants/edit/:restaurant_id            | PUT               | {editedRestaurant}                | Edit one restaurant     |
-| /api/restaurants/delete/:restaurant_id           | DELETE               | {msg: "Restaurant successfully deleted!" }                | Delete one restaurant     |
+| /api/offers/list       | GET               | [offers]                     | Get all offers     |
+| /api/offers/getOne/:offer_id            | GET               | {offer}                | Get one offer     |
+| /api/offers/create            | POST               | {createdOffer}                | Create offer      |
+| /api/offers/edit/:offer_id            | PUT               | {editedOffer}                | Edit one offer     |
+| /api/offers/delete/:offer_id           | DELETE               | {msg: "Offer successfully deleted!" }                | Delete one offer     |
 
 ## **User routes**:
 
 | URL path                    | HTTP Method       | Response                          | Action                        |
 | :--------------------------:|:-----------------:| :--------------------------------:| :----------------------------:|
-| /api/users/getFavoriteRestaurants              | GET               | [restaurants]                           | Get logged user's favorite restaurants |
-| /api/users/likeRestaurant/:restaurant_id              | PUT               | {updatedUser}                           | Like Restaurant |
-| /api/users/dislikeRestaurant/:restaurant_id              | PUT               | {updatedUser}                           | Dislike Restaurant |
+| /api/users/getFavoriteOffers              | GET               | [offers]                           | Get logged user's favorite offers |
+| /api/users/likeoffer/:offer_id              | PUT               | {updatedUser}                           | Like offer |
+| /api/users/dislikeoffer/:offer_id              | PUT               | {updatedUser}                           | Dislike offer |
 
 ## **Auth routes**:
 

@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const restaurantRoutes = require('./restaurant.routes');
+const offerRoutes = require('./offer.routes');
 const authRoutes = require('./auth.routes');
 
-router.use('/restaurants', restaurantRoutes);
+router.use('/offers', offerRoutes);
 router.use('/auth', authRoutes);
 router.use('/user', require('./user.routes'));
 
