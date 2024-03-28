@@ -22,6 +22,6 @@ const countrySchema = new Schema(
     }
 )
 
-const Country = model("Country", countrySchema)
+const Country = model("Country", countrySchema, "countries")
 
 module.exports = Country

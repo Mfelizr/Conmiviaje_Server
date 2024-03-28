@@ -5,7 +5,7 @@ const offerSchema = new Schema(
         //pais, imagen, descripcion, precio, fechaInicial, fechaFinal, condiciones
         country: {
             type: Schema.Types.ObjectId,
-            ref: 'country', 
+            ref: 'Country', 
             required: [true, "A Country name is required"]
         },
         image: {
