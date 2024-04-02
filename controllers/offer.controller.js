@@ -1,7 +1,5 @@
 const { Types } = require('mongoose');
 const Offer = require('../models/offer.model');
-const Country = require('../models/country.model');
-const TravelInformation = require('../models/travelInformation.model');
 
 const listAllOffers = async (_req, res, next) => {
   try {

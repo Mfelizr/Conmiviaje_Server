@@ -1,0 +1,22 @@
+[
+    {
+      "iso_code": "ESP",
+      "name": "Spain"
+    },
+    {
+      "iso_code": "DOM",
+      "name": "Dominican Republic"
+    },
+    {
+        "iso_code": "CUB",
+        "name": "Cuba"
+    },
+    {
+        "iso_code": "COL",
+        "name": "Colombia"
+    },
+    {
+        "iso_code": "VEN",
+        "name": "Venezuela"
+    }
+  ] 

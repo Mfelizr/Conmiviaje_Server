@@ -4,18 +4,26 @@ const jwt = require('jsonwebtoken');
 
 const signup = async (req, res, next) => {
   try {
-    let user = await User.findOne({ email: req.body.email });
+    let { email, username, password, avatar } = req.body;
+
+    let user = await User.findOne({ email });
     if (user) {
-      res.status(400).json({ error: true, contenido: 'Usuario ya registrado' });
+      res.status(400).json({ error: true, message: 'Usuario ya existe' });
     }
-    const passwordCrypt = creaPass(req.body.password);
+
+    if (!email || !password || !username ) {
+       console.log('Favor completar todos los campos' )
+      return res.status(400).json({ message: 'Favor completar todos los campos' });      
+    }
+
+    const passwordCrypt = creaPass(password);
     const result = await User.create({
-      email: req.body.email,
+      email: email,
       password: passwordCrypt,
-      username: req.body.username,
-      avatar: req.body.avatar || undefined,
+      username: username,
+      avatar: avatar || undefined,
     });
-    res.json({ error: false, contendio: result });
+    res.json({ error: false, message: result });
   } catch (error) {
     next(error)
   }
