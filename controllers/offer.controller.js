@@ -1,9 +1,22 @@
 const { Types } = require('mongoose');
+const { startOfToday } = require("date-fns");
 const Offer = require('../models/offer.model');
 
 const listAllOffers = async (_req, res, next) => {
   try {
     const offers = await Offer.find().populate('country').sort({ createdAt: -1 }).lean();
+    res.status(200).json(offers);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const listActiveOffers = async (_req, res, next) => {
+  try {
+    const offers = await Offer.find({ 
+        date_start: {$lte: startOfToday()},
+        date_end: {$gte: startOfToday()}
+     }).populate('country').sort({ createdAt: -1 }).lean();
     res.status(200).json(offers);
   } catch (err) {
     next(err);
@@ -135,6 +148,7 @@ const deleteOneOffer = async (req, res, next) => {
 
 module.exports = {
   listAllOffers,
+  listActiveOffers,
   getOneOffer,
   createOneOffer,
   editOneOffer,

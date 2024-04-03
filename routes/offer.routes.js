@@ -1,6 +1,7 @@
 const router = require("express").Router()
 const {
     listAllOffers,
+    listActiveOffers,
     getOneOffer,
     createOneOffer,
     editOneOffer,
@@ -8,6 +9,9 @@ const {
 } = require ("../controllers/offer.controller")
 
 router.get("/list", listAllOffers)
+
+router.get("/listActive", listActiveOffers)
+
 router.get("/getOne/:offer_id", getOneOffer)
 
 router.post("/create", createOneOffer)
